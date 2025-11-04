@@ -1,10 +1,10 @@
-# 🚆 SNCF Real-time Forecast of Platform Waiting Time Challenge 🚆
+# 🚆 SNCF Real-time Forecast of Platform Waiting Time Challenge 
 
 > This repository contains the solution for the **SNCF Real-time Forecast of Platform Waiting Time Challenge**. The goal is to predict the waiting time difference for trains, helping to improve the accuracy of passenger information.
 
 ---
 
-### 🎯 Challenge Goal
+### Challenge Goal
 
 The primary objective of this challenge is to predict the difference between the theoretical and actual waiting times for a train at a given station. This prediction is for a train located two stations upstream, aiming to provide more accurate real-time information to passengers.
 
@@ -12,7 +12,7 @@ The primary objective of this challenge is to predict the difference between the
 
 ---
 
-### 📊 Data
+### Data
 
 The dataset is provided by SNCF-Transilien and consists of the following files:
 - `x_train.csv`: Training data with 667,265 rows and 10 features.
@@ -24,25 +24,25 @@ The data includes contextual features (`train`, `station`, `date`, `stop number`
 
 ---
 
-### 🛠️ Methodology
+### Methodology
 
 Our approach to solving this challenge is a comprehensive pipeline designed for robust feature engineering, model training, and evaluation.
 
-#### 1. Exploratory Data Analysis (EDA) 📈
+#### 1. Exploratory Data Analysis (EDA) 
 A thorough EDA was conducted to understand the underlying patterns in the data. This involved:
 -   **Distribution Analysis:** Examining the distributions of individual features and the target variable.
 -   **Correlation Analysis:** Identifying relationships between features and the target variable.
 -   **Time Series Analysis:** Investigating temporal patterns and seasonality in the data.
 -   **Outlier Detection:** Identifying and handling anomalous data points.
 
-#### 2. Feature Engineering 🔬
+#### 2. Feature Engineering 
 Based on the insights from EDA, a set of new features was engineered to enhance the predictive power of our models:
 -   **Time-based Features:** Extracted features from the `date` column, such as day of the week, month, and year.
 -   **Lag Features:** Created lag features for the target variable to capture temporal dependencies.
 -   **Interaction Features:** Generated interaction features between key variables like `train` and `gare`.
 -   **Rolling Statistics:** Calculated rolling means, medians, and standard deviations for historical waiting times.
 
-#### 3. Model Development 🤖
+#### 3. Model Development 
 We experimented with several state-of-the-art regression models to find the best performer for this task:
 -   **Baseline Model:** A simple Random Forest model was used as a benchmark.
 -   **Gradient Boosting Machines (GBMs):**
@@ -50,13 +50,13 @@ We experimented with several state-of-the-art regression models to find the best
     -   **XGBoost:** Another popular and powerful GBM library.
 -   **Ensemble Methods:** We combined the predictions of multiple models using stacking and blending to improve generalization.
 
-#### 4. Training and Evaluation ⚙️
+#### 4. Training and Evaluation 
 The models were trained and evaluated using a rigorous cross-validation strategy:
 -   **Time-based Cross-Validation:** To prevent data leakage and ensure the model generalizes well to future data.
 -   **Hyperparameter Tuning:** We used Optuna for efficient hyperparameter optimization.
 -   **Metric:** Models were evaluated using the Mean Absolute Error (MAE).
 
-#### 5. Final Model and Prediction 🚀
+#### 5. Final Model and Prediction 
 The best-performing model, an ensemble of LightGBM models, was retrained on the entire training dataset. This final model was then used to make predictions on the test set.
 
 ---
